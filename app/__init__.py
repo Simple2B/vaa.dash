@@ -46,7 +46,7 @@ def create_app(environment="development"):
     def get_user(id):
         return User.query.get(int(id))
 
-    login_manager.login_view = "auth.login"
+    login_manager.login_view = "auth.signin"
     login_manager.login_message_category = "info"
     login_manager.anonymous_user = AnonymousUser
 
