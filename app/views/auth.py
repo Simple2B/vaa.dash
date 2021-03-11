@@ -27,6 +27,25 @@ def signup():
         # login_user(user)
         flash("Registration successful.", "success")
         log(log.DEBUG, "Registration successful.")
+
+        # SEND CONFIRMATION EMAIL
+        user = User.query.filter_by(email=form.email.data).first()
+        if user:
+            confirm_url = generate_password_reset_url(user.email)
+            html = render_template(
+                "auth/email_signup_confirmation.html",
+                confirm_url=confirm_url,
+                first_name=user.first_name,
+                last_name=user.last_name,
+                email=user.email,
+            )
+            subject = "Welcome to Visual Approach Analytics"
+            send_email(user.email, subject, html)
+            log(
+                log.DEBUG,
+                "A confirmation email has been sent.",
+            )
+
         return redirect(url_for("auth.signin"))
     elif form.is_submitted():
         for error in form.errors:
