@@ -17,6 +17,10 @@ class BaseConfig(object):
     SECRET_KEY = os.environ.get(
         "SECRET_KEY", "Ensure you set a secret key, this is important!"
     )
+    SECURITY_PASSWORD_SALT = os.environ.get(
+        "SECURITY_PASSWORD_SALT", "Please set security salt!"
+    )
+
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     WTF_CSRF_ENABLED = False
 
@@ -24,6 +28,14 @@ class BaseConfig(object):
 
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_ECHO = False
+
+    # Email settings
+    MAIL_SERVER = os.environ.get("MAIL_SERVER", "smtp.gmail.com")
+    MAIL_PORT = int(os.environ.get("MAIL_PORT", "587"))
+    MAIL_USE_TLS = True
+    MAIL_USERNAME = os.environ.get("EMAIL_USER")
+    MAIL_PASSWORD = os.environ.get("EMAIL_PASS")
+    MAIL_DEFAULT_SENDER = os.environ.get("MAIL_DEFAULT_SENDER")
 
     @staticmethod
     def configure(app):

@@ -86,7 +86,7 @@
       </nav>
     </header>
     <!-- Flash Messages -->
-    {% with messages = get_flashed_messages(with_categories=true) %} {% if
+    <!-- {% with messages = get_flashed_messages(with_categories=true) %} {% if
       messages %} {% for category, message in messages %}
       <div class="small alert alert-{{ category }} alert-dismisible">
         <button
@@ -98,9 +98,9 @@
           <span aria-hidden="true">&times;</span>
           <span class="sr-only">Close</span>
         </button>
-        <!-- {{ message }} -->
+        {{ message }}
       </div>
-      {% endfor %} {% endif %} {% endwith %}
+      {% endfor %} {% endif %} {% endwith %} -->
     <!-- Main Content -->
     {% block content %}{% endblock %}
     <!-- Footer-->

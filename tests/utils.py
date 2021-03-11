@@ -13,8 +13,8 @@ def register(
         last_name=last_name,
         email=email,
         country=country,
-        password=password,
     )
+    user.set_password(password)
     user.save()
     return user.id
 
