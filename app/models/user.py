@@ -18,12 +18,13 @@ class User(db.Model, UserMixin, ModelMixin):
     country = db.Column(db.String(50))
     organization = db.Column(db.String(100))
     password_hash = db.Column(db.String(255))
-    # activated = db.Column(db.Boolean, default=False)
+    authenticated = db.Column(db.Boolean, default=False)
     # created_at = db.Column(db.DateTime, default=datetime.now)
 
     @property
     def is_authenticated(self):
-        return True
+        """Return True if the user is authenticated."""
+        return self.authenticated
 
     def set_password(self, user_password):
         self.password_hash = generate_password_hash(user_password)
