@@ -1,0 +1,65 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container py-4">
+  <div class="card w-50 mx-auto">
+    <div class="card-header">
+      <h4 class="card-title" style="text-align: center">Create New Password</h4>
+    </div>
+    <div class="card-body">
+      <!-- Flash Messages -->
+      {% with messages = get_flashed_messages(with_categories=true) %} {% if
+      messages %} {% for category, message in messages %}
+      <div class="small alert alert-{{ category }} alert-dismisible">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="alert"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+          <span class="sr-only">Close</span>
+        </button>
+        {{ message }}
+      </div>
+      {% endfor %} {% endif %} {% endwith %}
+
+      <form id="" method="POST" data-focus="false">
+        {{ form.hidden_tag() }}
+
+        <div class="form-group">
+          {% if form.password.errors %} {{ form.password.label }}<br />
+          {{ form.password(class="form-control is-invalid", type="password") }}
+          <div class="invalid-feedback">
+            {% for error in form.password.errors %}
+            <span>{{ error }}</span>
+            {% endfor %}
+          </div>
+          {% else %} {{ form.password.label }}<br />
+          {{ form.password(class="form-control", type="password") }} {% endif %}
+          <div class="help-block with-errors"></div>
+        </div>
+
+        <div class="form-group">
+          {% if form.confirm_password.errors %} {{ form.confirm_password.label
+          }}<br />
+          {{ form.confirm_password(class="form-control is-invalid",
+          type="password") }}
+          <div class="invalid-feedback">
+            {% for error in form.confirm_password.errors %}
+            <span>{{ error }}</span>
+            {% endfor %}
+          </div>
+          {% else %} {{ form.confirm_password.label }}<br />
+          {{ form.confirm_password(class="form-control", type="password") }}
+          {%endif %}
+          <div class="help-block with-errors"></div>
+        </div>
+
+        <div class="form-group text-center mb-8">
+          {{ form.submit(class="form-control-submit-button btn btn-primary
+          btn-rounded w-60 w-md-100 btn-purple text-small p-2") }}
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

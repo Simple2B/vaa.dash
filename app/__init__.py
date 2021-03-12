@@ -3,6 +3,7 @@ import os
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
+from flask_mail import Mail
 from werkzeug.exceptions import HTTPException
 
 from app.logger import log
@@ -10,6 +11,7 @@ from app.logger import log
 # instantiate extensions
 login_manager = LoginManager()
 db = SQLAlchemy()
+mail = Mail()
 log.set_level(log.DEBUG)
 
 
@@ -32,6 +34,9 @@ def create_app(environment="development"):
     env = os.environ.get("FLASK_ENV", environment)
     app.config.from_object(config[env])
     config[env].configure(app)
+
+    # Set up email.
+    mail.init_app(app)
 
     # Set up extensions.
     db.init_app(app)

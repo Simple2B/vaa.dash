@@ -1,7 +1,6 @@
 # from datetime import datetime
 
 from flask_login import UserMixin, AnonymousUserMixin
-from sqlalchemy.ext.hybrid import hybrid_property
 from werkzeug.security import generate_password_hash, check_password_hash
 
 from app import db
@@ -19,22 +18,19 @@ class User(db.Model, UserMixin, ModelMixin):
     country = db.Column(db.String(50))
     organization = db.Column(db.String(100))
     password_hash = db.Column(db.String(255))
-    # activated = db.Column(db.Boolean, default=False)
+    authenticated = db.Column(db.Boolean, default=False)
     # created_at = db.Column(db.DateTime, default=datetime.now)
 
-    @hybrid_property
-    def password(self):
-        return self.password_hash
+    @property
+    def is_authenticated(self):
+        """Return True if the user is authenticated."""
+        return self.authenticated
 
-    @password.setter
-    def password(self, password):
-        self.password_hash = generate_password_hash(password)
+    def set_password(self, user_password):
+        self.password_hash = generate_password_hash(user_password)
 
-    @classmethod
-    def authenticate(cls, email, password):
-        user = cls.query.filter(cls.email == email).first()
-        if user is not None and check_password_hash(user.password, password):
-            return user
+    def check_password(self, user_password):
+        return check_password_hash(self.password_hash, user_password)
 
     def __str__(self):
         return "<User: %s %s>" % self.first_name, self.last_name

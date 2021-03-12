@@ -7,12 +7,14 @@ flask-admin
 Flask-Login
 flask-migrate
 Flask-Mail
+flask_mail
 Flask-SQLAlchemy
 Flask-WTF
 itsdangerous
 Jinja2
 MarkupSafe
 mysqlclient
+pycountry
 pytest
 python-dotenv
 SQLAlchemy
