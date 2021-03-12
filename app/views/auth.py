@@ -39,7 +39,7 @@ def signup():
                 last_name=user.last_name,
                 email=user.email,
             )
-            subject = "Welcome to Visual Approach Analytics"
+            subject = "Greetings from Visual Approach Analytics!"
             send_email(user.email, subject, html)
             log(
                 log.DEBUG,
