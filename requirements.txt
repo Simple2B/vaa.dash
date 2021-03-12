@@ -18,5 +18,6 @@ pycountry
 pytest
 python-dotenv
 SQLAlchemy
+sqlalchemy_utils
 Werkzeug
 WTForms

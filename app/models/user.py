@@ -20,7 +20,8 @@ class User(db.Model, UserMixin, ModelMixin):
     role_id = db.Column(db.Integer, db.ForeignKey("roles.id"))
     password_hash = db.Column(db.String(255))
     authenticated = db.Column(db.Boolean, default=False)
-    # created_at = db.Column(db.DateTime, default=datetime.now)
+    signup_at = db.Column(db.DateTime, default=datetime.now)
+    role = db.relationship("Role")
 
     @property
     def is_authenticated(self):
@@ -33,8 +34,8 @@ class User(db.Model, UserMixin, ModelMixin):
     def check_password(self, user_password):
         return check_password_hash(self.password_hash, user_password)
 
-    def __str__(self):
-        return "<User: %s %s>" % self.first_name, self.last_name
+    def __repr__(self):
+        return "<User: %s>" % self.email
 
 
 class AnonymousUser(AnonymousUserMixin):
