@@ -66,6 +66,8 @@ def signin():
             flash("Wrong email or password.", "danger")
             log(log.ERROR, "Wrong email or password.")
             return redirect(url_for("auth.signin"))
+        user.authenticated = True
+        user.save()
         login_user(user)
         # flash("Login successful.", "success")
         log(log.DEBUG, "Login successful.")
@@ -76,6 +78,9 @@ def signin():
 @auth_blueprint.route("/logout")
 @login_required
 def logout():
+    user = current_user
+    user.authenticated = False
+    user.save()
     logout_user()
     log(log.DEBUG, "You were logged out.")
     # flash("You were logged out.", "info")

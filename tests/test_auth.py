@@ -49,12 +49,19 @@ def test_login_and_logout(client):
     # Access to logout view before login should fail.
     response = logout(client)
     assert b"Please log in to access this page." in response.data
+
     register()
     response = login(client, "test@test.com")
     assert response.status_code == 200
+
     # Should successfully logout the currently logged in user.
     response = logout(client)
     assert response.status_code == 200
+
+    # Incorrect login credentials should fail.
+    response = login(client, "sometest@gmail.com", "wrongpassword")
+    assert b"Wrong email or password." in response.data
+
     # Correct credentials should login
     response = login(client, "test@test.com")
     assert response.status_code == 200

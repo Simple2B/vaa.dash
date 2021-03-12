@@ -19,14 +19,13 @@ class User(db.Model, UserMixin, ModelMixin):
     organization = db.Column(db.String(100))
     role_id = db.Column(db.Integer, db.ForeignKey("roles.id"))
     password_hash = db.Column(db.String(255))
-    signup_at = db.Column(db.DateTime, default=datetime.now)
-    # activated = db.Column(db.Boolean, default=False)
-
-    role = db.relationship("Role")
+    authenticated = db.Column(db.Boolean, default=False)
+    # created_at = db.Column(db.DateTime, default=datetime.now)
 
     @property
     def is_authenticated(self):
-        return True
+        """Return True if the user is authenticated."""
+        return self.authenticated
 
     def set_password(self, user_password):
         self.password_hash = generate_password_hash(user_password)

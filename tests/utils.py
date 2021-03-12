@@ -6,6 +6,7 @@ def register(
     last_name="lastname",
     email="test@test.com",
     country="UK",
+    authenticated=False,
     password="password",
 ):
     user = User(
@@ -13,6 +14,7 @@ def register(
         last_name=last_name,
         email=email,
         country=country,
+        authenticated=authenticated,
     )
     user.set_password(password)
     user.save()
