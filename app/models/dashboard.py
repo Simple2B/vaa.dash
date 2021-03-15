@@ -2,15 +2,7 @@ from sqlalchemy_utils import URLType
 
 from app import db
 from app.models.utils import ModelMixin
-
-
-association_table = db.Table(
-    "role_dashboard",
-    db.metadata,
-    db.Column("role_id", db.Integer, db.ForeignKey("roles.id")),
-    db.Column("dashboard_id", db.Integer, db.ForeignKey("dashboards.id")),
-    extend_existing=True,
-)
+from app.models.role import association_table
 
 
 class Dashboard(db.Model, ModelMixin):
