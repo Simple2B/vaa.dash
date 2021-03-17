@@ -13,9 +13,10 @@ class Dashboard(db.Model, ModelMixin):
     title = db.Column(db.String(150))
     description = db.Column(db.String(300))
     url = db.Column(URLType)
+    unauthorized_access = db.Column(db.Boolean, default=False)
     role = db.relationship(
         "Role", back_populates="dashboard", secondary=association_table
     )
 
     def __repr__(self):
-        return "<Dashboard: %s>" % self.title
+        return f"<Dashboard: {self.title}[{self.url}]>"
