@@ -71,7 +71,7 @@ def add_dash(server):
         "Sunday",
     ]
 
-    check_in_duration = df["Check-In Time"].describe()  # noqa F841
+    # check_in_duration = df["Check-In Time"].describe()  # noqa F841
 
     # Register all departments for callbacks
     all_departments = df["Department"].unique().tolist()
