@@ -3,11 +3,12 @@
   <p></p>
   <div class="row">
     {% for dashboard in dashboards%}
-    <div class="col-md-4">
-      <div class="card" style="width: 18rem">
-        <div class="card-body" style="height: 20rem">
+
+    <div class="col-sm-12 col-lg-4">
+      <div class="card" style="width: 22rem">
+        <div class="card-body" style="height: 17rem">
           <h5 class="card-title">{{ dashboard.title }}</h5>
-          <p class="card-text">{{ dashboard.description }}</p>
+          <p class="card-text">{{ dashboard.description | truncate(250) }}</p>
           <a href="{{ dashboard.url }}" class="btn btn-secondary"
             >See Dashboard</a
           >
