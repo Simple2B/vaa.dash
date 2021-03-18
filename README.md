@@ -23,13 +23,25 @@ source .venv/bin/activate
 ```
 
 # Install the requirements with pip
+
+```
 pip install -r requirements.txt
+```
 
 # Build the docker container for db
+
+```
 docker-compose up -d db
+```
 
 # Create the configured database.
+
+```
 flask create-db
+```
 
 # Run app
+
+```
 flask run
+```
