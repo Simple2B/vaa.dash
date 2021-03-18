@@ -1,5 +1,5 @@
 from flask import render_template, Blueprint
-from flask_login import login_required
+from app.controllers import accessed_links
 
 
 main_blueprint = Blueprint("main", __name__)
@@ -7,10 +7,4 @@ main_blueprint = Blueprint("main", __name__)
 
 @main_blueprint.route("/")
 def index():
-    return render_template("index.html")
-
-
-@main_blueprint.route("/dashboard")
-@login_required
-def dashboard():
-    return render_template("dashboard.html")
+    return render_template("index.html", dashboards=accessed_links())

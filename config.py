@@ -12,7 +12,7 @@ load_dotenv(os.path.join(BASE_DIR, ".env"))
 class BaseConfig(object):
     """Base configuration."""
 
-    APP_NAME = os.environ.get("Visual Approach Analytics App")
+    APP_NAME = "Visual Approach Analytics"
     DEBUG_TB_ENABLED = False
     SECRET_KEY = os.environ.get(
         "SECRET_KEY", "Ensure you set a secret key, this is important!"

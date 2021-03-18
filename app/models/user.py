@@ -1,4 +1,4 @@
-# from datetime import datetime
+from datetime import datetime
 
 from flask_login import UserMixin, AnonymousUserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -17,9 +17,11 @@ class User(db.Model, UserMixin, ModelMixin):
     email = db.Column(db.String(255))
     country = db.Column(db.String(50))
     organization = db.Column(db.String(100))
+    role_id = db.Column(db.Integer, db.ForeignKey("roles.id"))
     password_hash = db.Column(db.String(255))
     authenticated = db.Column(db.Boolean, default=False)
-    # created_at = db.Column(db.DateTime, default=datetime.now)
+    signup_at = db.Column(db.DateTime, default=datetime.now)
+    role = db.relationship("Role")
 
     @property
     def is_authenticated(self):
@@ -32,9 +34,22 @@ class User(db.Model, UserMixin, ModelMixin):
     def check_password(self, user_password):
         return check_password_hash(self.password_hash, user_password)
 
-    def __str__(self):
-        return "<User: %s %s>" % self.first_name, self.last_name
+    def __repr__(self):
+        return "<User: %s>" % self.email
 
 
 class AnonymousUser(AnonymousUserMixin):
-    pass
+    @property
+    def is_authenticated(self):
+        return False
+
+    @property
+    def is_active(self):
+        return False
+
+    @property
+    def is_anonymous(self):
+        return True
+
+    def get_id(self):
+        return

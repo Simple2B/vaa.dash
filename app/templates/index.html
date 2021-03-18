@@ -1,7 +1,21 @@
 {% extends "base.html" %} {% block content %}
 <div class="container">
-  <h1>Welcome!</h1>
-  <hr />
-  <p><p>You are NOT registered user!</p></p>
+  <p></p>
+  <div class="row">
+    {% for dashboard in dashboards%}
+
+    <div class="col-sm-12 col-lg-4">
+      <div class="card" style="width: 22rem">
+        <div class="card-body" style="height: 17rem">
+          <h5 class="card-title">{{ dashboard.title }}</h5>
+          <p class="card-text">{{ dashboard.description | truncate(250) }}</p>
+          <a href="{{ dashboard.url }}" class="btn btn-secondary"
+            >See Dashboard</a
+          >
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
 </div>
 {% endblock %}
