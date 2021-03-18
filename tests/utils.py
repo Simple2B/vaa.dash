@@ -1,5 +1,4 @@
-from app.models.dashboard import Dashboard
-from app.models import User, Role
+from app.models import User, Role, Dashboard
 
 
 def register(

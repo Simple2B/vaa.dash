@@ -29,7 +29,7 @@ pycountry
 pytest
 pathlib
 python-dotenv
-SQLAlchemy
+SQLAlchemy==1.3.23
 sqlalchemy_utils
 Werkzeug
 WTForms

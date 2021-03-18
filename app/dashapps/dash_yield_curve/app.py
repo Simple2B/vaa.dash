@@ -9,8 +9,8 @@ import dash_core_components as dcc
 import dash_html_components as html
 
 
-APP_ID = "dash_app_2"
-URL_BASE = "/dash/dash_app_2/"
+APP_ID = "the_second_dash_app"
+URL_BASE = "/dash/the_second_dash_app/"
 MIN_HEIGHT = 600
 
 

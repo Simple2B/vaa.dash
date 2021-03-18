@@ -9,8 +9,8 @@ import datetime
 from datetime import datetime as dt
 import pathlib
 
-APP_ID = "dash_app_1"
-URL_BASE = "/dash/dash_app_1/"
+APP_ID = "the_first_dash_app"
+URL_BASE = "/dash/the_first_dash_app/"
 MIN_HEIGHT = 600
 
 

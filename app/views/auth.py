@@ -6,7 +6,7 @@ from app.forms import LoginForm, RegistrationForm, RequestResetForm, ResetPasswo
 from app.controllers import (
     generate_password_reset_url,
     send_email,
-    show_accessed_links,
+    accessed_links,
     confirm_token,
 )
 from app.logger import log
@@ -57,9 +57,7 @@ def signup():
             for msg in form.errors[error]:
                 log(log.ERROR, "signup(): %s", msg)
                 flash(msg, "danger")
-    return render_template(
-        "auth/register.html", form=form, dashboards=show_accessed_links()
-    )
+    return render_template("auth/register.html", form=form, dashboards=accessed_links())
 
 
 @auth_blueprint.route("/signin", methods=["GET", "POST"])
@@ -79,9 +77,7 @@ def signin():
         # flash("Login successful.", "success")
         log(log.DEBUG, "Login successful.")
         return redirect(url_for("main.index"))
-    return render_template(
-        "auth/login.html", form=form, dashboards=show_accessed_links()
-    )
+    return render_template("auth/login.html", form=form, dashboards=accessed_links())
 
 
 @auth_blueprint.route("/logout")
@@ -124,7 +120,7 @@ def reset_request():
         "auth/reset_password_request.html",
         title="Reset Password",
         form=form,
-        dashboards=show_accessed_links(),
+        dashboards=accessed_links(),
     )
 
 
@@ -148,4 +144,6 @@ def reset_password(token):
         flash("Your password has been changed!", "info")
         log(log.DEBUG, "Your password has been changed!")
         return redirect(url_for("auth.signin"))
-    return render_template("auth/reset_token.html", form=form)
+    return render_template(
+        "auth/reset_token.html", form=form, dashboards=accessed_links()
+    )

@@ -35,6 +35,6 @@ def test_dashboard_access(client):
     assert admin_dashboard.role[0].name == user.role.name
     assert admin_dashboard.url
 
-    response = client.get("/dash_app_1", follow_redirects=True)
+    response = client.get("/the_first_dash_app", follow_redirects=True)
     assert response.status_code
     assert response.status_code == 200

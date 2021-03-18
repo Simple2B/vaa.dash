@@ -7,4 +7,4 @@ from .auth import (
 )
 
 from .role_auth import verify_role_dash
-from .access_links import show_accessed_links
+from .accessed_links import accessed_links

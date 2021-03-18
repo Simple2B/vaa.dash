@@ -15,8 +15,8 @@ import dash_html_components as html
 from .controls import COUNTIES, WELL_STATUSES, WELL_TYPES, WELL_COLORS
 
 
-APP_ID = "dash_app_3"
-URL_BASE = "/dash/dash_app_3/"
+APP_ID = "the_third_dash_app"
+URL_BASE = "/dash/the_third_dash_app/"
 MIN_HEIGHT = 600
 
 # get relative data folder

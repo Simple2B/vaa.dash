@@ -1,40 +1,40 @@
 from flask import render_template
 
 from app.dashapps import bp
-from app.dashapps.dash_analysis import app as dash_app_1_obj
-from app.dashapps.dash_yield_curve import app as dash_app_2_obj
-from app.dashapps.dash_oil_and_gas import app as dash_app_3_obj
-from app.controllers import verify_role_dash, show_accessed_links
+from app.dashapps.dash_analysis import app as the_first_dash_app_obj
+from app.dashapps.dash_yield_curve import app as the_second_dash_app_obj
+from app.dashapps.dash_oil_and_gas import app as the_third_dash_app_obj
+from app.controllers import verify_role_dash, accessed_links
 
 
-@bp.route("/dash_app_1")
+@bp.route("/the_first_dash_app")
 @verify_role_dash
-def dash_app_1():
+def the_first_dash_app():
     return render_template(
         "dashapps/dash_app.html",
-        dash_url=dash_app_1_obj.URL_BASE,
-        min_height=dash_app_1_obj.MIN_HEIGHT,
-        dashboards=show_accessed_links(),
+        dash_url=the_first_dash_app_obj.URL_BASE,
+        min_height=the_first_dash_app_obj.MIN_HEIGHT,
+        dashboards=accessed_links(),
     )
 
 
-@bp.route("/dash_app_2")
+@bp.route("/the_second_dash_app")
 @verify_role_dash
-def dash_app_2():
+def the_second_dash_app():
     return render_template(
         "dashapps/dash_app.html",
-        dash_url=dash_app_2_obj.URL_BASE,
-        min_height=dash_app_2_obj.MIN_HEIGHT,
-        dashboards=show_accessed_links(),
+        dash_url=the_second_dash_app_obj.URL_BASE,
+        min_height=the_second_dash_app_obj.MIN_HEIGHT,
+        dashboards=accessed_links(),
     )
 
 
-@bp.route("/dash_app_3")
+@bp.route("/the_third_dash_app")
 @verify_role_dash
-def dash_app_3():
+def the_third_dash_app():
     return render_template(
         "dashapps/dash_app.html",
-        dash_url=dash_app_3_obj.URL_BASE,
-        min_height=dash_app_3_obj.MIN_HEIGHT,
-        dashboards=show_accessed_links(),
+        dash_url=the_third_dash_app_obj.URL_BASE,
+        min_height=the_third_dash_app_obj.MIN_HEIGHT,
+        dashboards=accessed_links(),
     )
