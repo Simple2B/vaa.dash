@@ -16,6 +16,7 @@ Flask-Login
 flask-migrate
 Flask-Mail
 flask_mail
+flask_security
 Flask-SQLAlchemy
 Flask-WTF
 gunicorn

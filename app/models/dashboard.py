@@ -21,4 +21,4 @@ class Dashboard(db.Model, ModelMixin):
     )
 
     def __repr__(self):
-        return f"<Dashboard: {self.title}[{self.url}]>"
+        return f"<Dashboard: {self.title} ({self.url})>"

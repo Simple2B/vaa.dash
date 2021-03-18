@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <title>Greetings from Visual Approach Analytics!</title>
+  </head>
+  <body>
+    <p>Dear {{ first_name }} {{ last_name }}!</p>
+    <p>
+        Your account has been created on visualapproach.io.
+    </p>
+    <p>
+        Follow the instructions below or ignore this email if you think you got it
+        by accident.
+    </p>
+    <p>
+        You can log in to your account on visualapproach.io platform <b>via your email
+        {{ email }}</b>, but first <b>set up your account with password</b>.
+    </p>
+    <p><b>To set up your account with password, click the button below</p></b>
+    <a href="{{ confirm_url }}"><button>SET UP ACCOUNT</button></a>
+    <p>
+      If the button is not available, please click on this link
+      <a href="{{ confirm_url }}">{{ confirm_url }}</a>
+    </p>
+    <p>Visual Approach.io team.</p>
+  </body>
+</html>
