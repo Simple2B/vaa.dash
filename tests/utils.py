@@ -21,12 +21,14 @@ def register(
     return user.id
 
 
-def create_dashboard(title, descriprion, url, roles, unauthorized_access=False):
+def create_dashboard(
+    title, descriprion, url, roles, available_to_unregistered_user=False
+):
     dashboard = Dashboard(
         title=title,
         description=descriprion,
         url=url,
-        unauthorized_access=unauthorized_access,
+        available_to_unregistered_user=available_to_unregistered_user,
     )
     dashboard.role += roles
     return dashboard.save()
@@ -50,20 +52,20 @@ def filled_db():
     dash1 = create_dashboard(
         "dash1",
         "description for dash1",
-        "http://127.0.0.1:5000/dash_app_1",
+        "http://127.0.0.1:5000/the_first_dash_app",
         [admin_user.role],
-        unauthorized_access=True,
+        available_to_unregistered_user=True,
     )
     dash2 = create_dashboard(
         "dash2",
         "description for dash2",
-        "http://127.0.0.1:5000/dash_app_2",
+        "http://127.0.0.1:5000/the_second_dash_app",
         [user.role],
     )
     dash3 = create_dashboard(
         "dash3",
         "description for dash3",
-        "http://127.0.0.1:5000/dash_app_3",
+        "http://127.0.0.1:5000/the_third_dash_app",
         [authenticated_user.role],
     )
     return

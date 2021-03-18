@@ -27,10 +27,13 @@ def verify_role_dash(route_method):
             if dash_url_path != url_path:
                 continue
         if not current_user.is_authenticated:
-            if dash.unauthorized_access:
+            if dash.available_to_unregistered_user:
                 return route_method(*args, **kwargs)
             log(log.WARNING, "Access denied for unauthorized user")
             raise HTTPException(description="Access denied for unauthorized user")
+        if current_user.authenticated:
+            if dash.available_to_registered_user:
+                return route_method(*args, **kwargs)
         if dash.role:
             for role in dash.role:
                 for user in role.user:
