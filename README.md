@@ -25,9 +25,6 @@ source .venv/bin/activate
 # Install the requirements with pip
 pip install -r requirements.txt
 
-# Unzip env.zip folder
-unzip env.zip
-
 # Build the docker container for db
 docker-compose up -d db
 
