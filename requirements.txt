@@ -11,6 +11,7 @@ fsspec
 flake8
 Flask
 flask-admin
+flask_basicauth
 flask_bootstrap
 Flask-Login
 flask-migrate
