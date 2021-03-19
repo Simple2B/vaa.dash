@@ -21,4 +21,5 @@ def accessed_links():
                 continue
             else:
                 continue
-    return dashboards
+
+    return set(dashboards)

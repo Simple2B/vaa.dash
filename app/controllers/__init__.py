@@ -8,3 +8,4 @@ from .auth import (
 
 from .role_auth import verify_role_dash
 from .accessed_links import accessed_links
+from .sample_db import filled_db

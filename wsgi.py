@@ -3,6 +3,7 @@ import click
 
 from app import create_app, db, models, forms
 from app.admin_page import init_admin
+from app.controllers import filled_db
 
 app = create_app()
 admin_page = init_admin(app, db)
@@ -20,10 +21,19 @@ def _init_db():
     db.create_all()
 
 
+# create an empty db
 @app.cli.command()
 def create_db():
     """Create the configured database."""
     _init_db()
+
+
+# create a db with a test data
+@app.cli.command()
+def create_db_with_data():
+    """Create the configured database with a test data."""
+    _init_db()
+    filled_db()
 
 
 @app.cli.command()
