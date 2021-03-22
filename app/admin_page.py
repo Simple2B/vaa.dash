@@ -39,7 +39,7 @@ class MyView(AdminIndexView):
 class UserModelView(sqla.ModelView):
     create_template = "admin_page/create_user.html"
 
-    form_excluded_columns = ("password_hash", "signup_at")
+    form_excluded_columns = ("password_hash", "signup_at", "authenticated")
     column_exclude_list = ["password_hash"]
     column_searchable_list = ["email"]
     column_filters = [
