@@ -14,14 +14,14 @@ class User(db.Model, UserMixin, ModelMixin):
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(30))
     last_name = db.Column(db.String(30))
-    email = db.Column(db.String(255))
+    email = db.Column(db.String(255), unique=True)
     country = db.Column(db.String(50))
     organization = db.Column(db.String(100))
     role_id = db.Column(db.Integer, db.ForeignKey("roles.id"))
-    password_hash = db.Column(db.String(255))
     authenticated = db.Column(db.Boolean, default=False)
     signup_at = db.Column(db.DateTime, default=datetime.now)
     role = db.relationship("Role")
+    password_hash = db.Column(db.String(255))
 
     @property
     def is_authenticated(self):

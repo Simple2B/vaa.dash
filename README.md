@@ -34,10 +34,18 @@ pip install -r requirements.txt
 docker-compose up -d db
 ```
 
-# Create the configured database.
+# Create the configured database
+
+without data
 
 ```
 flask create-db
+```
+
+or with data
+
+```
+flask create-db-with-data
 ```
 
 # Run app

@@ -17,7 +17,7 @@ auth_blueprint = Blueprint("auth", __name__)
 @auth_blueprint.route("/signup", methods=["GET", "POST"])
 def signup():
     if current_user.is_authenticated:
-        return redirect(url_for("main.dashboard"))
+        return redirect(url_for("main.index"))
     form = RegistrationForm(request.form)
     if form.validate_on_submit():
         user = User(
@@ -63,7 +63,7 @@ def signup():
 @auth_blueprint.route("/signin", methods=["GET", "POST"])
 def signin():
     if current_user.is_authenticated:
-        return redirect(url_for("main.dashboard"))
+        return redirect(url_for("main.index"))
     form = LoginForm(request.form)
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()

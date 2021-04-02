@@ -29,6 +29,7 @@ def add_dash(server):
         __name__,
         server=server,
         url_base_pathname=URL_BASE,
+        suppress_callback_exceptions=True,
         meta_tags=[{"name": "viewport", "content": "width=device-width"}],
     )
 

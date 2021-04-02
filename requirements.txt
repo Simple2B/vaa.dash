@@ -11,11 +11,13 @@ fsspec
 flake8
 Flask
 flask-admin
+flask_basicauth
 flask_bootstrap
 Flask-Login
 flask-migrate
 Flask-Mail
 flask_mail
+flask_security
 Flask-SQLAlchemy
 Flask-WTF
 gunicorn

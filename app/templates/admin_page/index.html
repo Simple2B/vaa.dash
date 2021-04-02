@@ -1,0 +1,4 @@
+{% if current_user.authenticated %} {% extends 'admin/master.html' %} {% block
+body %}
+<h2>Welcome to the Visual Approach Analytics admin page!</h2>
+{{ super() }} {% endblock body %} {% endif %}

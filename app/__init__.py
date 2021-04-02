@@ -1,6 +1,7 @@
 import os
 
 from flask import Flask, render_template
+from flask_basicauth import BasicAuth
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
@@ -16,6 +17,7 @@ db = SQLAlchemy()
 mail = Mail()
 bootstrap = Bootstrap()
 log.set_level(log.DEBUG)
+basic_auth = BasicAuth()
 
 
 def create_app(environment="development"):
@@ -52,6 +54,8 @@ def create_app(environment="development"):
 
     # Set up bootstrap extension
     bootstrap.init_app(app)
+
+    basic_auth.init_app(app)
 
     # Register blueprints.
     app.register_blueprint(auth_blueprint)
